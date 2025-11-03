@@ -1,5 +1,19 @@
 #include "contact.hpp"
 
+void contact::setcontact(cont& book, int j){
+    book.index = j;
+    book.first_name = first_name;
+    book.last_name = last_name;
+    book.nickname = nickname;
+    book.nb = nb;
+    book.secret = secret;
+}
+
+// bool contact::checkempty(cont& book){
+//     if(book.first_name == "" || book.last_name == "" || book.nb == "" || book.nickname == "" || book.secret == "")
+//         return false;
+//     return true;
+// }
 void contact::setfirstname(std::string first){
     this->first_name = first;
 }
@@ -20,13 +34,6 @@ void contact::setsecret(std::string secret){
     this->secret = secret;
 }
 
-void contact::setcontact(cont& book){
-    book.first_name = first_name;
-    book.last_name = last_name;
-    book.nickname = nickname;
-    book.nb = nb;
-    book.secret = secret;
-}
 
 void contact::getfirstname(contact& con, std::string name){
     std::cout << "enter first name :" ;

@@ -1,15 +1,10 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 #include <iostream>
+#include "phonebook.hpp"
 #include <bits/stdc++.h>
 
-struct cont{
-    std::string first_name;
-    std::string last_name;
-    std::string nickname;
-    std::string nb;
-    std::string secret; 
-};
+
 
 class contact{
     private:
@@ -25,7 +20,7 @@ class contact{
         void setnickname(std::string name);
         void setnb(std::string nb);
         void setsecret(std::string secret);
-        void setcontact(cont& book);
+        void setcontact(cont& book, int j);
 
         void getcontact(contact& con);
         void getfirstname(contact& con, std::string name);

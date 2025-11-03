@@ -17,7 +17,7 @@ int main()
         if(name == "ADD")
         {
             con.getcontact(con);
-            con.setcontact(book[j]);
+            con.setcontact(book[j],j);
             std::cout << "first name :" << book[j].first_name << std::endl;
             std::cout << "last name :" << book[j].last_name << std::endl;
             std::cout << "nickname :" << book[j].nickname << std::endl;
