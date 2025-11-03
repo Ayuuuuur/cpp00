@@ -3,8 +3,14 @@
 #include <iostream>
 #include "phonebook.hpp"
 #include <bits/stdc++.h>
-
-
+struct cont{
+    int index;
+    std::string first_name;
+    std::string last_name;
+    std::string nickname;
+    std::string nb;
+    std::string secret;
+};
 
 class contact{
     private:

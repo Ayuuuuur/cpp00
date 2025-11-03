@@ -9,12 +9,13 @@ void contact::setcontact(cont& book, int j){
     book.secret = secret;
 }
 
-// bool contact::checkempty(cont& book){
-//     if(book.first_name == "" || book.last_name == "" || book.nb == "" || book.nickname == "" || book.secret == "")
-//         return false;
-//     return true;
-// }
+bool contact::checkempty(cont& book){
+    if(book.first_name == "" || book.last_name == "" || book.nb == "" || book.nickname == "" || book.secret == "")
+        return false;
+    return true;
+}
 void contact::setfirstname(std::string first){
+    
     this->first_name = first;
 }
 
