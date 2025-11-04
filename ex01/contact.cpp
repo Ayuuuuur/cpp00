@@ -9,11 +9,6 @@ void contact::setcontact(cont& book, int j){
     book.secret = secret;
 }
 
-bool contact::checkempty(cont& book){
-    if(book.first_name == "" || book.last_name == "" || book.nb == "" || book.nickname == "" || book.secret == "")
-        return false;
-    return true;
-}
 void contact::setfirstname(std::string first){
     
     this->first_name = first;
@@ -37,31 +32,59 @@ void contact::setsecret(std::string secret){
 
 
 void contact::getfirstname(contact& con, std::string name){
-    std::cout << "enter first name :" ;
-    getline(std::cin, name);
+    while(1)
+    {
+        std::cout << "enter first name :" ;
+        getline(std::cin, name);
+        if(checkempty(name) == true)
+            break;
+    }
     con.setfirstname(name);
 }
 
 void contact::getlastname(contact& con, std::string name){
-    std::cout << "enter last name :" ;
-    getline(std::cin, name);
+    while(1)
+    {
+        std::cout << "enter last name :" ;
+        getline(std::cin, name);
+        if(checkempty(name) == true)
+            break;
+    }
     con.setlastname(name);
 }
 
 void contact::getnickname(contact& con, std::string name){
-    std::cout << "enter nickname :" ;
-    getline(std::cin, name);
+    while (1)
+    {
+        std::cout << "enter nickname :" ;
+        getline(std::cin, name);
+        if(checkempty(name) == true)
+            break;
+    }
     con.setnickname(name);
 }
 
 void contact::getnb(contact& con, std::string name){
-    std::cout << "enter phone number :" ;
-    getline(std::cin, name);
+    while(1)
+    {
+        std::cout << "enter phone number :" ;
+        getline(std::cin, name);
+        if(checkempty(name) == true)
+        {
+            if(checknum(name) == true)
+                break;
+        }
+    }
     con.setnb(name);
 }
 void contact::getsecret(contact& con, std::string name){
-    std::cout << "enter your darkest secrect :" ;
-    getline(std::cin, name);
+    while(1)
+    {
+        std::cout << "enter your darkest secrect :" ;
+        getline(std::cin, name);
+        if(checkempty(name) == true)
+            break;
+    }
     con.setsecret(name);
 }
 
@@ -72,4 +95,31 @@ void contact::getcontact(contact& con){
     con.getnickname(con,name);
     con.getnb(con,name);
     con.getsecret(con,name);
+}
+
+bool contact::checkempty(std::string str){
+    int i = 0;
+    while(str[i])
+    {
+        if(str[i] != ' ' || str[i] ==  0)
+            return true;
+        i++;
+    }
+    return false;
+}
+bool contact::checknum(std::string str)
+{
+    int i = 0;
+    while(str[i])
+    {
+        if((str[i] >= '0' && str[i] <= '9' )|| str[i] == '+')
+        {
+            i++;
+            continue;
+        }
+        else
+            return false;
+        i++;
+    }
+    return true;
 }

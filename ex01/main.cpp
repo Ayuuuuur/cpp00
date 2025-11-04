@@ -18,13 +18,14 @@ int main()
         {
             con.getcontact(con);
             con.setcontact(book[j],j);
-            std::cout << "first name :" << book[j].first_name << std::endl;
-            std::cout << "last name :" << book[j].last_name << std::endl;
-            std::cout << "nickname :" << book[j].nickname << std::endl;
-            std::cout << "nb :" << book[j].nb << std::endl;
-            std::cout << "secret :" << book[j].secret << std::endl;
+            
         }
         j++;
     }
     return 0;
 }
+//  std::cout << "first name :" << book[j].first_name << std::endl;
+//             std::cout << "last name :" << book[j].last_name << std::endl;
+//             std::cout << "nickname :" << book[j].nickname << std::endl;
+//             std::cout << "nb :" << book[j].nb << std::endl;
+//             std::cout << "secret :" << book[j].secret << std::endl;
