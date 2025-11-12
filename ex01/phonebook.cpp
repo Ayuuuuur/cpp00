@@ -8,30 +8,22 @@ int	ft_atoi(std::string str)
 
 	i = 0;
 	sum = 0;
-
-	// The signal starts by default as positive
 	sign = 1;
-
-	// while there are spaces or tabs go to the next character
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		++i;
-
-	// If it's a minus sign the value of the 'sign' is inverted and go to next char
 	if (str[i] == '-')
 	{
 		sign *= -1;
 		i++;
 	}
-
-	// While the string has numbers, they will be added to sum
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		// This formula receives the number that is in the index and adds a decimal place
 		sum = (sum * 10) + (str[i] - '0');
 		i++;
 	}
 	return (sign * sum);
 }
+
 void phonebook::searchcontact()
 {
     std::string str = "";
@@ -39,25 +31,34 @@ void phonebook::searchcontact()
     {
         std::cout << "Enter Index: ";
         if(getline(std::cin,str) && str != "")
-            break;
+        {
+            int j = ft_atoi(str);
+            if(j > i - 1)
+            {
+                std::cout << "!!! Index not found !!!" << std::endl;
+                continue;
+            }
+            std::cout << "   Index   | First name | Last name | Nickname |" << std::endl;
+            std::cout << "| " << j ;
+            std::cout << " | " << arr[j].getfirstname() ;
+            std::cout << " | " << arr[j].getlastname() ;
+            std::cout << " | " << arr[j].getnickname() << " | "<< std::endl;
+        }
 
     }
-    int j = ft_atoi(str);
-    std::cout << "Index  | First name | Last name | Nickname |" << std::endl;
-    std::cout << "| " << j ;
-    std::cout << " | " << arr[j].getfirstname() ;
-    std::cout << " | " << arr[j].getlastname() ;
-    std::cout << " | " << arr[j].getnickname() << " | "<< std::endl;
+    
 }
 
 void phonebook::addcontact(){
     std::string str = "";    
+    int tmp = 0;
     
     printf("i == >%d\n",i);
-    // if(this->i >= 8)
-    // {
-        
-    // }
+    if(this->i >= 8)
+    {
+        tmp = i;
+        i = i % 8;
+    }
     while(1)
     {
         std::cout << "Enter first name : ";
@@ -117,6 +118,10 @@ void phonebook::addcontact(){
         std::cout << "Empty line" << std::endl;
         
     }
-
+    printf("new i == >%d\n",i);
+    if(tmp != 0)
+    {
+        i = tmp;
+    }
     i++;    
 }
