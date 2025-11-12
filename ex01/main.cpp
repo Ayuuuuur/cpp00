@@ -3,10 +3,8 @@
 
 int main() 
 {
-    contact con;
-    phonebook phone;
+        phonebook phone;
 
-    int j = 0;
     std::string name;
     
     std::cout << "Hello, Welcome to your Phonebook" << std::endl;
@@ -14,6 +12,8 @@ int main()
     {
         std::cout << "enter a command :" ;
         getline(std::cin, name);
+        if (std::cin.eof()) // diriha f lakhrin ahbiba
+            break;
         if(name == "ADD")
             phone.addcontact();
         if(name == "SEARCH")
@@ -22,7 +22,6 @@ int main()
         }
         if(name == "EXIT")
             break;
-        j++;
     }
     return 0;
 }
