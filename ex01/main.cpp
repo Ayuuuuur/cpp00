@@ -20,6 +20,8 @@ int main()
         {
             phone.searchcontact();
         }
+        if(name == "EXIT")
+            break;
         j++;
     }
     return 0;
