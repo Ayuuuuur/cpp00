@@ -4,7 +4,7 @@
 int main() 
 {
     contact con;
-    cont book[7];
+    phonebook phone;
 
     int j = 0;
     std::string name;
@@ -15,17 +15,17 @@ int main()
         std::cout << "enter a command :" ;
         getline(std::cin, name);
         if(name == "ADD")
+            phone.addcontact();
+        if(name == "SEARCH")
         {
-            con.getcontact(con);
-            con.setcontact(book[j],j);
-            
+            phone.searchcontact();
         }
         j++;
     }
     return 0;
 }
-//  std::cout << "first name :" << book[j].first_name << std::endl;
-//             std::cout << "last name :" << book[j].last_name << std::endl;
-//             std::cout << "nickname :" << book[j].nickname << std::endl;
-//             std::cout << "nb :" << book[j].nb << std::endl;
-//             std::cout << "secret :" << book[j].secret << std::endl;
+// std::cout << "first name :" << book[j].first_name << std::endl;
+// std::cout << "last name :" << book[j].last_name << std::endl;
+// std::cout << "nickname :" << book[j].nickname << std::endl;
+// std::cout << "nb :" << book[j].nb << std::endl;
+// std::cout << "secret :" << book[j].secret << std::endl;

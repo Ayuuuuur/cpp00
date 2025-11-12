@@ -1,6 +1,6 @@
 NAME = phonebook
 CC = c++
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 SRC := 	contact.cpp main.cpp\
 		phonebook.cpp

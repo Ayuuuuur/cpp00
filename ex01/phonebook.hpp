@@ -6,12 +6,10 @@
 
 class phonebook{
     private:
-        // contact con[8];
-        // int i;
+        contact arr[8];
+        int i = 0;
     public:
-    
-        // phonebook();
-        // void addcontact();
-        // void searchcontact();
+        void addcontact();
+        void searchcontact();
 };
 #endif
