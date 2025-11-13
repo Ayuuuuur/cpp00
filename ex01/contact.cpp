@@ -34,7 +34,7 @@ std::string contact::getsecret(){
 }
 
 
-bool contact::checknum(std::string str)
+int contact::check_nb(std::string str)
 {
     int i = 0;
     while(str[i])
@@ -45,8 +45,8 @@ bool contact::checknum(std::string str)
             continue;
         }
         else
-            return false;
+            return 0;
         i++;
     }
-    return true;
+    return 1;
 }

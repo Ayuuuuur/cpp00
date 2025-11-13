@@ -5,7 +5,7 @@ std::string formatColumn(const std::string& text) {
     if (text.length() > width)
         return text.substr(0, width - 1) + ".";
     else
-        return (width - text.length(), ' ') + text;
+        return std::string(width - text.length(), '0') + text;
 }
 
 int check_num(std::string str)
@@ -23,6 +23,9 @@ int check_num(std::string str)
 void phonebook::searchcontact()
 {
     std::string str = "";
+    int tmp = i;
+    if(i >= 8)
+        tmp = 7;
     while (1)
     {
         std::cout << "Enter Index: ";
@@ -33,9 +36,9 @@ void phonebook::searchcontact()
         {
 
             int j = std::atoi(str.c_str());
-            if (j > i - 1 || check_num(str) == 1)
+            if (j > tmp || check_num(str) == 1)
             {
-                std::cout << "!!! Index not valid !!!" << std::endl;
+                std::cout << "--- Index not valid ---" << std::endl;
                 continue;
             }
             std::cout << "---------------------------------------------\n";
@@ -73,7 +76,7 @@ void phonebook::addcontact(){
             arr[i].setfirstname(str);
             break;
         }
-        std::cout << "Empty line" << std::endl; 
+        std::cout << "--- Empty line ---" << std::endl; 
     }
 
     while(1)
@@ -87,7 +90,7 @@ void phonebook::addcontact(){
             arr[i].setlastname(str);
             break;
         }
-        std::cout << "Empty line" << std::endl;   
+        std::cout << "--- Empty line ---" << std::endl;   
     }
 
     while(1)
@@ -101,7 +104,7 @@ void phonebook::addcontact(){
             arr[i].setnickname(str);
             break;
         }
-        std::cout << "Empty line" << std::endl;    
+        std::cout << "--- Empty line ---" << std::endl;    
     }
 
     while(1)
@@ -110,12 +113,17 @@ void phonebook::addcontact(){
         getline(std::cin,str);
         if (std::cin.eof())
             exit(1);
+        if(arr[i].check_nb(str) == 0)
+        {
+            std::cout << "--- Invalide Phone Number ---" << std::endl;    
+            continue;
+        } 
         if(str != "")
         {
             arr[i].setnb(str);
             break;
         }
-        std::cout << "Empty line" << std::endl;
+        std::cout << "--- Empty line ---" << std::endl;
     }
 
     while(1)
@@ -129,11 +137,12 @@ void phonebook::addcontact(){
             arr[i].setsecret(str);
             break;
         }
-        std::cout << "Empty line" << std::endl;   
+        std::cout << "--- Empty line ---" << std::endl;   
     }
     if(tmp != 0)
     {
         i = tmp;
     }
+    std::cout << "--- Contact Added Successfully ---" << std::endl;   
     i++;    
 }

@@ -23,7 +23,7 @@ class contact{
         std::string getnb();
         std::string getsecret();
 
-        bool checknum(std::string str);
+        int check_nb(std::string str);
 
 };
 
