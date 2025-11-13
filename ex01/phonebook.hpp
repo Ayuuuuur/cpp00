@@ -2,7 +2,8 @@
 #define PHONEBOOK_H
 #include <iostream>
 #include "contact.hpp"
-#include <bits/stdc++.h>
+#include <iomanip>
+#include <string>
 
 class phonebook{
     private:

@@ -1,59 +1,62 @@
 #include "phonebook.hpp"
 
-int	ft_atoi(std::string str)
-{
-	int	sum;
-	int	i;
-	int	sign;
+std::string formatColumn(const std::string& text) {
+    int width = 10;
+    if (text.length() > width)
+        return text.substr(0, width - 1) + ".";
+    else
+        return (width - text.length(), ' ') + text;
+}
 
-	i = 0;
-	sum = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		++i;
-	if (str[i] == '-')
-	{
-		sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		sum = (sum * 10) + (str[i] - '0');
-		i++;
-	}
-	return (sign * sum);
+int check_num(std::string str)
+{
+    int i = 0;
+    while(str[i])
+    {
+        if(str[i] < '0' || str[i] > '9')
+            return(1);
+        i++;
+    }
+    return(0);
 }
 
 void phonebook::searchcontact()
 {
     std::string str = "";
-    while(1)
+    while (1)
     {
         std::cout << "Enter Index: ";
-        if(getline(std::cin,str) && str != "")
+        getline(std::cin, str);
+        if (std::cin.eof())
+            exit(1);
+        if (str != "")
         {
-            int j = ft_atoi(str);
-            if(j > i - 1)
+
+            int j = std::atoi(str.c_str());
+            if (j > i - 1 || check_num(str) == 1)
             {
-                std::cout << "!!! Index not found !!!" << std::endl;
+                std::cout << "!!! Index not valid !!!" << std::endl;
                 continue;
             }
-            std::cout << "   Index   | First name | Last name | Nickname |" << std::endl;
-            std::cout << "| " << j ;
-            std::cout << " | " << arr[j].getfirstname() ;
-            std::cout << " | " << arr[j].getlastname() ;
-            std::cout << " | " << arr[j].getnickname() << " | "<< std::endl;
+            std::cout << "---------------------------------------------\n";
+            std::cout << "|" << formatColumn("Index")
+                      << "|" << formatColumn("First name")
+                      << "|" << formatColumn("Last name")
+                      << "|" << formatColumn("Nickname") << "|\n";
+            std::cout << "---------------------------------------------\n";
+            std::cout << "|" << formatColumn(str)
+                      << "|" << formatColumn(arr[j].getfirstname())
+                      << "|" << formatColumn(arr[j].getlastname())
+                      << "|" << formatColumn(arr[j].getnickname()) << "|\n";
+            std::cout << "---------------------------------------------\n";
         }
-
     }
-    
 }
 
 void phonebook::addcontact(){
     std::string str = "";    
     int tmp = 0;
     
-    printf("i == >%d\n",i);
     if(this->i >= 8)
     {
         tmp = i;
@@ -62,63 +65,72 @@ void phonebook::addcontact(){
     while(1)
     {
         std::cout << "Enter first name : ";
-        if(getline(std::cin,str) && str != "")
+        getline(std::cin,str);
+        if (std::cin.eof())
+            exit(1);
+        if(str != "")
         {
             arr[i].setfirstname(str);
             break;
         }
-        std::cout << "Empty line" << std::endl;
-        
+        std::cout << "Empty line" << std::endl; 
     }
 
     while(1)
     {
         std::cout << "Enter last name : ";
-        if(getline(std::cin,str) && str != "")
+        getline(std::cin,str);
+        if (std::cin.eof())
+            exit(1);
+        if(str != "")
         {
             arr[i].setlastname(str);
             break;
         }
-        std::cout << "Empty line" << std::endl;
-        
+        std::cout << "Empty line" << std::endl;   
     }
 
     while(1)
     {
         std::cout << "Enter nickname : ";
-        if(getline(std::cin,str) && str != "")
+        getline(std::cin,str);
+        if (std::cin.eof())
+            exit(1);
+        if(str != "")
         {
             arr[i].setnickname(str);
             break;
         }
-        std::cout << "Empty line" << std::endl;
-        
+        std::cout << "Empty line" << std::endl;    
     }
 
     while(1)
     {
         std::cout << "Enter phone number : ";
-        if(getline(std::cin,str) && str != "")
+        getline(std::cin,str);
+        if (std::cin.eof())
+            exit(1);
+        if(str != "")
         {
             arr[i].setnb(str);
             break;
         }
         std::cout << "Empty line" << std::endl;
-        
     }
 
     while(1)
     {
         std::cout << "Enter darkest secret : ";
-        if(getline(std::cin,str) && str != "")
+        getline(std::cin,str);
+        if (std::cin.eof())
+            exit(1);
+        if(str != "")
         {
             arr[i].setsecret(str);
             break;
         }
-        std::cout << "Empty line" << std::endl;
-        
+        std::cout << "Empty line" << std::endl;   
     }
-    printf("new i == >%d\n",i);
     if(tmp != 0)
     {
         i = tmp;
