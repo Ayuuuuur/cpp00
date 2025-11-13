@@ -17,7 +17,6 @@ void contact::setsecret(std::string secret){
 }
 
 
-
 std::string contact::getfirstname(){
     return first_name;
 }
