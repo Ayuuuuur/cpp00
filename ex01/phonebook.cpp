@@ -5,7 +5,7 @@ std::string formatColumn(const std::string& text) {
     if (text.length() > width)
         return text.substr(0, width - 1) + ".";
     else
-        return std::string(width - text.length(), '0') + text;
+        return std::string(width - text.length(), ' ') + text;
 }
 
 int check_num(std::string str)
