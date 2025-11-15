@@ -15,6 +15,7 @@ void letter::to_upper(std::string str)
         std::cout << str[i] ;
         i++;
     }
+    std::cout << ' ';
 }
 
 int main(int ac, char **av)
